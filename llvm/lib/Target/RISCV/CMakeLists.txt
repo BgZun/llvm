@@ -32,10 +32,12 @@ add_llvm_target(RISCVCodeGen
   RISCVISelLowering.cpp
   RISCVMachineFunctionInfo.cpp
   RISCVMacroFusion.cpp
+  RISCVLoadStoreOptimizer.cpp
   RISCVMCInstLower.cpp
   RISCVMergeBaseOffset.cpp
   RISCVRedundantCopyElimination.cpp
   RISCVRegisterInfo.cpp
+  RISCVRemoveBackToBackBranches.cpp
   RISCVSExtWRemoval.cpp
   RISCVStripWSuffix.cpp
   RISCVSubtarget.cpp
@@ -56,6 +58,7 @@ add_llvm_target(RISCVCodeGen
   MC
   RISCVDesc
   RISCVInfo
+  Scalar
   SelectionDAG
   Support
   Target

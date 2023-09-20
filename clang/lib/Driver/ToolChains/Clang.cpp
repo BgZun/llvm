@@ -2103,6 +2103,46 @@ void Clang::AddRISCVTargetArgs(const ArgList &Args,
     else
       CmdArgs.push_back(A->getValue());
   }
+
+  if (Arg *A = Args.getLastArg(options::OPT_mload_store_pairs,
+                               options::OPT_mno_load_store_pairs)) {
+    if (A->getOption().matches(options::OPT_mload_store_pairs)) {
+      CmdArgs.push_back("-mllvm");
+      CmdArgs.push_back("-riscv-load-store-pairs=1");
+    }
+  }
+
+  if (Arg *A = Args.getLastArg(options::OPT_mccmov,
+                               options::OPT_mno_ccmov)) {
+    if (A->getOption().matches(options::OPT_mno_ccmov)) {
+      CmdArgs.push_back("-mllvm");
+      CmdArgs.push_back("-riscv-ccmov=0");
+    }
+  }
+
+  if (Arg *A = Args.getLastArg(options::OPT_mext,
+                               options::OPT_mno_ext)) {
+    if (A->getOption().matches(options::OPT_mext)) {
+      CmdArgs.push_back("-mllvm");
+      CmdArgs.push_back("-riscv-ext=1");
+    }
+  }
+
+  if (Arg *A = Args.getLastArg(options::OPT_mins,
+                               options::OPT_mno_ins)) {
+    if (A->getOption().matches(options::OPT_mins)) {
+      CmdArgs.push_back("-mllvm");
+      CmdArgs.push_back("-riscv-ins=1");
+    }
+  }
+
+  if (Arg *A = Args.getLastArg(options::OPT_mremove_back_to_back_branches,
+                               options::OPT_mno_remove_back_to_back_branches)) {
+    if (A->getOption().matches(options::OPT_mremove_back_to_back_branches)) {
+      CmdArgs.push_back("-mllvm");
+      CmdArgs.push_back("-riscv-remove-back-to-back-branches=1");
+    }
+  }
 }
 
 void Clang::AddSparcTargetArgs(const ArgList &Args,
